@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+  <style>
+    body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #333;
+  }
+  
+  header {
+    background-color: #000;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    max-width: 100%;
+    text-align: center;
+    overflow: hidden;
+      img{
+        display: inline-block;
+        max-width: 100%;
+        height: auto;
+        
+      }
+    
+  }
+  
+  .contenido {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  h2{
+    color: white;
+  }
+  
+  .item {
+    width: calc(50% - 20px);
+    margin: 10px;
+    padding: 10px;
+    background-color: #000;
+    border-radius: 5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #fffb03;
+    text-align: center;
+    overflow: hidden;
+    box-shadow: 0 1px 15px 3px #fffb03;
+    transition: box-shadow 0.3s ease;
+   
+    img {
+      display: none;
+      width: 40%;
+      /* -webkit-box-shadow: 14px 14px 18px -10px #fffb03;
+      -moz-box-shadow: 14px 14px 18px -10px #fffb03; */
+      box-shadow: 0 1px 15px 3px #fffb03;
+      transition: box-shadow 0.5s ease;
+
+    }
+  }
+  
+  .pantalla {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #333;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    overflow: hidden;
+    width: 50px;
+    height: 40px;
+    img{
+      width: 100%;
+    }
+  }
+
+  .zapato{
+    border-style: solid;
+    border-width: 5px;
+    border-color: #fffb03;
+    display: none;
+  }
+  
+  .colores {
+    margin-top: 10px;
+    background-color: whitesmoke;
+  }
+
+  .b-color{
+    appearance: none;
+  }
+  
+  .bolita {
+    display: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin: 5px;
+    border-width: 2px;
+    border-style: double;
+    border-color: #000;
+    cursor: pointer;
+    
+  }
+  .red{
+    background-color: red;
+  }
+  .verde{
+    background-color: green;
+  }
+  .azul{
+    background-color: blue;
+  }
+  .negro{
+    background-color: black;
+  }
+  .blanco{
+    background-color: white;
+  }
+  .amarillo{
+    background-color: yellow;
+  }
+  .vdoscuro{
+    background-color: rgb(2, 82, 2);
+  }
+  .vdlimon{
+    background-color: rgb(22, 252, 22);
+  }
+  @media screen and (max-width: 600px) {
+    .item {
+      width: calc(100% - 20px);
+    }
+  
+    .bolita {
+      width: 10px;
+      height: 10px;
+      margin: 2px;
+    }
+  }
+
+
+  </style>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Colección</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <header>
+    <img src="logo.jpg" alt="">
+    <button class="pantalla" onclick="activarPantallaCompleta()"><img src="fullscreen-svgrepo-com.svg" alt="pantalla-completa"></button>
+  </header>
+  
+  <div class="contenido">
+    <div class="item" id="item">
+      <h2 onclick="mostrar()">Luminoso clásico</h2>
+      <img class="zapato" id="zapato" src="zapato.jpg" alt="Foto del Elemento 1">
+      
+      <div class="colores" id="colores">
+        <div onclick="red()" class="bolita red"></div>
+        <div onclick="verde()" class="bolita verde"></div>
+        <div onclick="azul()" class="bolita azul"></div>
+        <div onclick="negro()" class="bolita negro"></div>
+        <div onclick="blanco()" class="bolita blanco"></div>
+        <div onclick="amarillo()" class="bolita amarillo"></div>
+        <div onclick="vdoscuro()" class="bolita vdoscuro"></div>
+        <div onclick="vdlimon()" class="bolita vdlimon"></div>
+      </div>
+    </div>
+
+  </div>
+  
+  <script>
+    function mostrarColores(button) {
+    var coloresDiv = button.nextElementSibling;
+    coloresDiv.innerHTML = ""; // Limpiar div de colores
+    var colores = ['rojo', 'verde', 'azul', 'amarillo', 'naranja', 'violeta'];
+  
+    colores.forEach(color => {
+      var bolita = document.createElement('div');
+      bolita.classList.add('bolita', color);
+      coloresDiv.appendChild(bolita);
+    });
+  
+    coloresDiv.style.display = 'block'; // Mostrar div de colores
+  }
+  
+function activarPantallaCompleta() {
+    var el = document.documentElement;
+  
+    var requestFullScreen = el.requestFullscreen || el.mozRequestFullScreen || el.webkitRequestFullScreen || el.msRequestFullscreen;
+  
+    requestFullScreen.call(el);
+}
+
+function mostrar(){
+  var img = document.getElementById("zapato");
+  var colores = document.getElementById("colores");
+  var bolitas = document.querySelectorAll(".bolita");
+  
+  img.style.display = "inline-block";
+  colores.style.display = "inline-block";
+  
+  bolitas.forEach(function(bolita) {
+      bolita.style.display = "inline-block";
+  });
+}
+
+function red(){
+  var contenedor = document.getElementById("item")
+  var zapato = document.getElementById("zapato")
+  zapato.style.borderColor = "red"
+  zapato.style.boxShadow = "0 1px 15px 3px red"
+  contenedor.style.borderColor = "red"
+  contenedor.style.boxShadow = "0 1px 15px 3px red"
+}
+function verde(div){
+  var contenedor = document.getElementById("item")
+  var zapato = document.getElementById("zapato")
+  zapato.style.borderColor = "green"
+  zapato.style.boxShadow = "0 1px 15px 3px green"
+  contenedor.style.borderColor = "green"
+  contenedor.style.boxShadow = "0 1px 15px 3px green"
+}
+function azul(div){
+  var contenedor = document.getElementById("item")
+  var zapato = document.getElementById("zapato")
+  zapato.style.borderColor = "blue"
+  zapato.style.boxShadow = "0 1px 15px 3px blue"
+  contenedor.style.borderColor = "blue"
+  contenedor.style.boxShadow = "0 1px 15px 3px blue"
+}
+function negro(div){
+  var contenedor = document.getElementById("item")
+  var zapato = document.getElementById("zapato")
+  zapato.style.borderColor = "black"
+  zapato.style.boxShadow = "0 1px 15px 3px black"
+  contenedor.style.borderColor = "black"
+  contenedor.style.boxShadow = "0 1px 15px 3px black"
+}
+function blanco(div){
+  var contenedor = document.getElementById("item")
+  var zapato = document.getElementById("zapato")
+  zapato.style.borderColor = "white"
+  zapato.style.boxShadow = "0 1px 15px 3px white"
+  contenedor.style.borderColor = "white"
+  contenedor.style.boxShadow = "0 1px 15px 3px white"
+}
+function amarillo(div){
+  var contenedor = document.getElementById("item")
+  var zapato = document.getElementById("zapato")
+  zapato.style.boxShadow = "0 1px 15px 3px yellow"
+  zapato.style.borderColor = "yellow"
+  contenedor.style.borderColor = "yellow"
+  contenedor.style.boxShadow = "0 1px 15px 3px yellow"
+}
+function vdoscuro(div){
+  var contenedor = document.getElementById("item")
+  var zapato = document.getElementById("zapato")
+  zapato.style.borderColor = "rgb(2, 82, 2)"
+  zapato.style.boxShadow = "0 1px 15px 3px rgb(2, 82, 2)"
+  contenedor.style.borderColor = "rgb(2, 82, 2)"
+  contenedor.style.boxShadow = "0 1px 15px 3px rgb(2, 82, 2)"
+}
+function vdlimon(div){
+  var contenedor = document.getElementById("item")
+  var zapato = document.getElementById("zapato")
+  zapato.style.borderColor = "rgb(22, 252, 22)"
+  zapato.style.boxShadow = "0 1px 15px 3px rgb(22, 252, 22)"
+  contenedor.style.borderColor = "rgb(22, 252, 22)"
+  contenedor.style.boxShadow = "0 1px 15px 3px rgb(22, 252, 22)"
+}
+function d(div){
+  var contenedor = document.getElementById("item")
+  var zapato = document.getElementById("zapato")
+  zapato.style.borderColor = "yellow"
+  zapato.style.boxShadow = "0 1px 15px 3px black"
+  contenedor.style.borderColor = "yellow"
+  contenedor.style.boxShadow = "0 1px 15px 3px black"
+}
+  </script>
+</body>
+</html>
