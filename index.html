@@ -131,6 +131,12 @@
   .vdlimon{
     background-color: rgb(22, 252, 22);
   }
+    .morado{
+    background-color: purple;
+    }
+     .rosa{
+    background-color: pink;
+    }
   @media screen and (max-width: 600px) {
     .item {
       width: calc(100% - 20px);
@@ -171,6 +177,8 @@
         <div onclick="amarillo()" class="bolita amarillo"></div>
         <div onclick="vdoscuro()" class="bolita vdoscuro"></div>
         <div onclick="vdlimon()" class="bolita vdlimon"></div>
+        <div onclick="morado()" class="bolita morado"></div>
+        <div onclick="rosa()" class="bolita rosa"></div>
       </div>
     </div>
 
@@ -283,6 +291,22 @@ function d(div){
   zapato.style.boxShadow = "0 1px 15px 3px black"
   contenedor.style.borderColor = "yellow"
   contenedor.style.boxShadow = "0 1px 15px 3px black"
+}
+function morado(){
+    var contenedor = document.getElementById("item")
+  var zapato = document.getElementById("zapato")
+  zapato.style.borderColor = "purple"
+  zapato.style.boxShadow = "0 1px 15px 3px purple"
+  contenedor.style.borderColor = "purple"
+  contenedor.style.boxShadow = "0 1px 15px 3px purple"
+}
+    function rosado(){
+    var contenedor = document.getElementById("item")
+  var zapato = document.getElementById("zapato")
+  zapato.style.borderColor = "pink"
+  zapato.style.boxShadow = "0 1px 15px 3px pink"
+  contenedor.style.borderColor = "pink"
+  contenedor.style.boxShadow = "0 1px 15px 3px pink"
 }
   </script>
 </body>
